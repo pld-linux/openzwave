@@ -1,15 +1,13 @@
-%define	snap	20180121
-%define	commit	793d1b8b093f382c46fb59fe6435da208802ce43
-
 Summary:	Sample Executables for OpenZWave
 Name:		openzwave
-Version:	1.5.0
-Release:	0.%{snap}.1
+Version:	1.6.986
+Release:	1
 License:	LGPLv3+
 Group:		Libraries
 URL:		http://www.openzwave.net
-Source0:	https://github.com/OpenZWave/open-zwave/archive/%{commit}.tar.gz
-# Source0-md5:	fcd8fda2237693c8e93dacd954634818
+#Source0:	https://github.com/OpenZWave/open-zwave/archive/%{version}.tar.gz
+Source0:	http://old.openzwave.com/downloads/%{name}-%{version}.tar.gz
+# Source0-md5:	88fac5644767b6ce1c1cf0a6df5e8d89
 # Use system tinyxml
 Patch1:		%{name}-tinyxml.patch
 # Use system hidapi
@@ -44,9 +42,9 @@ Header files needed when you want to compile your own applications
 using openzwave
 
 %prep
-%setup -q -n open-zwave-%{commit}
-%patch1 -p1 -b.tinyxml
-%patch2 -p1 -b.hidapi
+%setup -q
+#%patch1 -p1 -b.tinyxml
+#%patch2 -p1 -b.hidapi
 
 %build
 major_ver=$(echo %{version} | awk -F \. {'print $1'})
@@ -54,6 +52,8 @@ minor_ver=$(echo %{version} | awk -F \. {'print $2'})
 revision=$(echo %{version} | awk -F \. {'print $3'})
 
 CPPFLAGS="%{rpmcppflags} -Wformat -DOPENZWAVE_ENABLE_EXCEPTIONS" \
+	USE_HID=1 \
+	USE_BI_TXML=0 \
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags} -pthread" \
 	VERSION_MAJ=$major_ver \
@@ -83,6 +83,8 @@ DESTDIR=$RPM_BUILD_ROOT \
 	VERSION_MIN=$minor_ver \
 	VERSION_REV=$revision \
 	PREFIX=%{_prefix} \
+	USE_HID=1 \
+	USE_BI_TXML=0 \
 	sysconfdir=%{_sysconfdir}/openzwave/ \
 	includedir=%{_includedir}/openzwave/ \
 	docdir=%{_docdir}/openzwave-%{version} \
@@ -108,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libopenzwave
 %defattr(644,root,root,755)
-%doc license/*.txt
+%doc licenses/license.txt
 %doc docs/default.htm docs/general/ docs/images+css/
 %{_libdir}/libopenzwave.so.*
 %dir %{_sysconfdir}/openzwave/
