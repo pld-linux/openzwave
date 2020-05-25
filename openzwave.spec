@@ -1,13 +1,13 @@
 Summary:	Sample Executables for OpenZWave
 Name:		openzwave
-Version:	1.6.986
+Version:	1.6.1133
 Release:	1
 License:	LGPLv3+
 Group:		Libraries
 URL:		http://www.openzwave.net
 #Source0:	https://github.com/OpenZWave/open-zwave/archive/%{version}.tar.gz
 Source0:	http://old.openzwave.com/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	88fac5644767b6ce1c1cf0a6df5e8d89
+# Source0-md5:	c9fd07d9d5bb971d97537e25ca5e73ce
 # Use system tinyxml
 Patch1:		%{name}-tinyxml.patch
 # Use system hidapi
