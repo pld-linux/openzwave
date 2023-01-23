@@ -8,10 +8,6 @@ URL:		http://www.openzwave.net
 #Source0:	https://github.com/OpenZWave/open-zwave/archive/%{version}.tar.gz
 Source0:	http://old.openzwave.com/downloads/%{name}-%{version}.tar.gz
 # Source0-md5:	c9fd07d9d5bb971d97537e25ca5e73ce
-# Use system tinyxml
-Patch1:		%{name}-tinyxml.patch
-# Use system hidapi
-Patch2:		%{name}-hidapi.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	hidapi-devel >= 0.8.0
@@ -43,8 +39,6 @@ using openzwave
 
 %prep
 %setup -q
-#%patch1 -p1 -b.tinyxml
-#%patch2 -p1 -b.hidapi
 
 %build
 major_ver=$(echo %{version} | awk -F \. {'print $1'})
