@@ -1,0 +1,11 @@
+--- openzwave-1.6.1914/cpp/src/command_classes/AssociationCommandConfiguration.cpp.orig	2021-04-03 21:42:37.000000000 +0200
++++ openzwave-1.6.1914/cpp/src/command_classes/AssociationCommandConfiguration.cpp	2023-01-23 11:12:59.774952182 +0100
+@@ -183,7 +183,7 @@
+ 					if (Node* node = GetNodeUnsafe())
+ 					{
+ 						Group* group = node->GetGroup(groupIdx);
+-						if ( NULL == group)
++						if ( NULL != group)
+ 						{
+ 							if (firstReports)
+ 							{
