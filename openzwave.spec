@@ -1,13 +1,13 @@
 Summary:	Sample Executables for OpenZWave
 Name:		openzwave
-Version:	1.6.1133
+Version:	1.6.1914
 Release:	1
 License:	LGPLv3+
 Group:		Libraries
 URL:		http://www.openzwave.net
 #Source0:	https://github.com/OpenZWave/open-zwave/archive/%{version}.tar.gz
 Source0:	http://old.openzwave.com/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	c9fd07d9d5bb971d97537e25ca5e73ce
+# Source0-md5:	e7813329cc711ec8f2f99ea503c81d5d
 Patch0:		gcc11.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
