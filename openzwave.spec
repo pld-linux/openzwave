@@ -12,6 +12,7 @@ Patch0:		gcc11.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	hidapi-devel >= 0.8.0
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	systemd-devel
 BuildRequires:	tinyxml-devel
 
@@ -32,11 +33,20 @@ protocol.
 
 %package -n libopenzwave-devel
 Summary:	Open-ZWave header files
+Group:		Development/Libraries
 Requires:	libopenzwave = %{version}-%{release}
 
 %description -n libopenzwave-devel
 Header files needed when you want to compile your own applications
 using openzwave
+
+%package -n libopenzwave-apidocs
+Summary:	API documentation for Open-ZWave
+Group:		Documentation
+BuildArch:	noarch
+
+%description -n libopenzwave-apidocs
+API documentation for Open-ZWave.
 
 %prep
 %setup -q
@@ -114,8 +124,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libopenzwave-devel
 %defattr(644,root,root,755)
-%doc docs/api
 %attr(755,root,root) %{_bindir}/ozw_config
 %{_includedir}/openzwave/
 %{_libdir}/libopenzwave.so
 %{_pkgconfigdir}/libopenzwave.pc
+
+%files -n libopenzwave-apidocs
+%defattr(644,root,root,755)
+%doc docs/api
