@@ -50,7 +50,7 @@ API documentation for Open-ZWave.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 major_ver=$(echo %{version} | awk -F \. {'print $1'})
